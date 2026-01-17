@@ -1,0 +1,26 @@
+data:
+  listings_glob: data/raw/abo/listings/metadata/listings_*.json*
+  images_csv: data/raw/abo/images/metadata/images.csv
+  images_dir: data/raw/abo/images
+  processed_dir: data/processed/abo_mini
+  output_train: data/processed/abo_mini/train.parquet
+  output_val: data/processed/abo_mini/val.parquet
+  output_test: data/processed/abo_mini/test.parquet
+
+subset:
+  seed: 42
+  max_items: 50000
+  language: en_US
+  require_existing_image_file: true
+
+fields:
+  text_fields:
+    ['title', 'brand', 'product_type', 'node_path', 'color', 'material']
+
+labels:
+  label_name: category_l1
+
+splits:
+  train_ratio: 0.90
+  val_ratio: 0.05
+  test_ratio: 0.05

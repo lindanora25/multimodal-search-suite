@@ -1,0 +1,96 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual envs
+.venv/
+venv/
+env/
+ENV/
+
+# =========================
+# Jupyter / notebooks
+# =========================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+# if you want to keep ONLY your main notebook, DO NOT ignore all *.ipynb
+# otherwise uncomment the next line:
+# *.ipynb
+
+# =========================
+# OS / editors
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Logs / temp
+# =========================
+*.log
+*.tmp
+*.swp
+
+# =========================
+# Data (raw) - do NOT commit
+# =========================
+data/raw/
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+
+# Keep processed parquet? (usually OK small); if huge, ignore too:
+# data/processed/
+
+# =========================
+# Artifacts / checkpoints (usually too big)
+# =========================
+artifacts/
+# If you want to commit small metrics JSONs, allow them explicitly:
+!artifacts/**/metrics*.json
+
+# If you want to keep a tiny CSV report in repo, prefer putting it in /reports
+# and commit that, not artifacts.
+# =========================
+# Model weights / FAISS / embeddings (big)
+# =========================
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+
+*.index
+*.faiss
+*.npy
+
+# =========================
+# Gradio / caches
+# =========================
+.gradio/
+.cache/
+huggingface/
+hf_cache/
+wandb/
+
+# =========================
+# Colab / Drive
+# =========================
+*.gsheet
+*.gdoc
+*.gslides

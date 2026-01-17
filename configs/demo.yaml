@@ -1,0 +1,16 @@
+demo:
+  title: 'Multimodal Product Search Suite'
+  topk_default: 10
+
+abo:
+  model:
+    arch: ViT-B-32
+    pretrained: laion2b_s34b_b79k
+    retrieval_ckpt: artifacts/abo/retrieval/openclip_abo_retrieval.pt
+    classifier_ckpt: artifacts/abo/classifier/openclip_abo_classifier.pt
+
+  index:
+    faiss_index: artifacts/abo/index/faiss.index
+    meta: artifacts/abo/index/meta.parquet
+    image_path_col: image_path
+    display_cols: ['title', 'brand', 'category_l1']

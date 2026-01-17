@@ -1,0 +1,32 @@
+run:
+  name: aircraft_retrieval_v1
+  seed: 42
+  device: cuda
+  amp: true
+
+data:
+  hf_dataset: Voxel51/FGVC-Aircraft
+  image_col: image
+  text_template: 'aircraft variant: {variant}'
+  split: train
+  image_size: 224
+
+model:
+  library: open_clip
+  arch: ViT-B-32
+  pretrained: laion2b_s34b_b79k
+
+train:
+  epochs: 3
+  batch_size: 128
+  lr: 1.0e-5
+  weight_decay: 0.01
+  warmup_steps: 200
+
+outputs:
+  ckpt_dir: artifacts/aircraft/retrieval
+  ckpt_name: openclip_aircraft_retrieval.pt
+
+metrics:
+  retrieval_k: [1, 5, 10]
+  compute_mrr: true

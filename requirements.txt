@@ -1,0 +1,11 @@
+torch
+open-clip-torch
+pandas
+pyarrow
+pillow
+pyyaml
+tqdm
+scikit-learn
+gradio
+faiss-cpu  # or faiss-gpu if you prefer
+open-clip-torch

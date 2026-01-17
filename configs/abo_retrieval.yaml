@@ -1,0 +1,47 @@
+run:
+  name: abo_retrieval_v1
+  seed: 42
+  device: cuda
+  amp: true
+
+data:
+  train_path: data/processed/abo_mini/train.parquet
+  val_path: data/processed/abo_mini/val.parquet
+  image_col: image_path
+  text_col: text
+  num_workers: 4
+  image_size: 224
+
+model:
+  library: open_clip
+  arch: ViT-B-32
+  pretrained: laion2b_s34b_b79k
+  embed_dim: 512
+  normalize: true
+
+train:
+  task: contrastive_retrieval
+  epochs: 3
+  batch_size: 128
+  grad_accum_steps: 1
+  lr: 1.0e-5
+  weight_decay: 0.01
+  warmup_steps: 500
+  max_steps: null
+  log_every: 50
+  eval_every: 500
+
+freeze:
+  # start stable: train projections first, not the whole backbone
+  freeze_vision: true
+  freeze_text: true
+  train_projections: true
+  train_logit_scale: true
+
+outputs:
+  ckpt_dir: artifacts/abo/retrieval
+  ckpt_name: openclip_abo_retrieval.pt
+
+metrics:
+  retrieval_k: [1, 5, 10]
+  compute_mrr: true
