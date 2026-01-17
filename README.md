@@ -22,7 +22,7 @@ At query time we:
 
 ---
 
-## Project phases (what you can talk about in interviews)
+## Project phases
 
 I have used 50,000 samples in domain (ABO-mini). From this 50,000, 90% was used for training, 5% for validation, and last 5% for testing.
 
