@@ -99,9 +99,9 @@ def category_l1_from_path(node_path: str):
 
 def resolve_image_file(images_dir: Path, rel_path: str):
     """
-    images.csv has rel paths like '14/14fe8812.jpg' :contentReference[oaicite:4]{index=4}
+    images.csv has rel paths like '14/14fe8812.jpg' 
     In abo-images-small.tar, images commonly live under images/small/<rel_path>
-    but we try a few candidates to be robust.
+    but I try a few candidates to be robust.
     """
     candidates = [
         images_dir / "small" / rel_path,
@@ -148,7 +148,7 @@ def resolve_image_by_id_fuzzy(images_dir: Path, image_id: str):
     """
     images_dir points to data/raw/images (which contains small/<shard>/files...)
 
-    Since ABO listing main_image_id is not hex, we cannot infer shard by id[:2].
+    Since ABO listing main_image_id is not hex.
     Instead, search for files that start with the image_id across shard folders.
 
     This is O(#files) if done naively, so we keep it efficient by:

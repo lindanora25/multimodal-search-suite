@@ -18,6 +18,7 @@ model:
   pretrained: laion2b_s34b_b79k
   embed_dim: 512
   normalize: true
+  ckpt_path: null
 
 train:
   task: contrastive_retrieval
@@ -41,6 +42,7 @@ freeze:
 outputs:
   ckpt_dir: artifacts/abo/retrieval
   ckpt_name: openclip_abo_retrieval_baseline.pt #openclip_abo_retrieval.pt
+  base_ckpt: null
 
 metrics:
   retrieval_k: [1, 5, 10]

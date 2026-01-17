@@ -81,7 +81,7 @@ def load_openclip(
         missing, unexpected = model.load_state_dict(state, strict=False)
         if missing:
             # Missing keys can happen if you saved only partial states in future.
-            # For our full-model checkpoints, missing should typically be empty.
+            # For full-model checkpoints, missing should typically be empty.
             print(f"[load_openclip] Missing keys: {len(missing)}")
         if unexpected:
             print(f"[load_openclip] Unexpected keys: {len(unexpected)}")

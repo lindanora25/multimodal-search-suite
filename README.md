@@ -10,7 +10,7 @@ This uses **OpenCLIP (ViT-B-32)** for embeddings, and **FAISS** for fast nearest
 
 ---
 
-## What “multimodal retrieval” means (in 30 seconds)
+## What “multimodal retrieval” means
 
 OpenCLIP maps **text** and **images** into the **same vector space**.  
 At query time we:
@@ -24,14 +24,15 @@ At query time we:
 
 ## Project phases (what you can talk about in interviews)
 
+I have used 50,000 samples in domain (ABO-mini). From this 50,000, 90% was used for training, 5% for validation, and last 5% for testing.
+
 ### Phase 0 — Baseline (no training, “zero-shot”)
 
-Evaluate the pretrained OpenCLIP model as-is on your domain (ABO-mini).  
-This is often called **zero-shot retrieval** (you’re not training, just evaluating the pretrained model).
+Evaluate the pretrained OpenCLIP model as-is. This is often called **zero-shot retrieval** (you’re not training, just evaluating the pretrained model).
 
 ### Phase 1 — Fine-tune for retrieval (contrastive)
 
-Fine-tune the model with a **CLIP-style contrastive loss** to better align **your domain text** (product titles/attributes) with **your domain images** (catalog photos).
+Fine-tune the model with a **CLIP-style contrastive loss** to better align **the domain text** (product titles/attributes) with **the domain images** (catalog photos).
 
 ### Phase 2 — Build a FAISS index
 
@@ -74,8 +75,11 @@ Metrics:
 
 ### Interpretation (why Text→Image improved more)
 
-Pretrained CLIP is trained mostly on **web image–caption pairs**. Your dataset uses **product titles + structured attributes** (“brand”, “material”, “node*path”…), which look different from web captions.  
-Contrastive fine-tuning teaches the text encoder that \_your style of text* should land near the correct product images—so **Text→Image gets a bigger boost** than Image→Text in many e-commerce settings.
+Pretrained CLIP is trained mostly on **web image–caption pairs**.
+
+dataset uses **product titles + structured attributes** (“brand”, “material”, “node\*path”…), which look different from web captions.
+
+Contrastive fine-tuning teaches the text encoder that \_used style of text\* should land near the correct product images—so **Text→Image gets a bigger boost** than Image→Text in many e-commerce settings.
 
 ---
 
